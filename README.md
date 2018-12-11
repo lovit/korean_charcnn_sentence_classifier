@@ -1,3 +1,10 @@
+## Performance
+
+| Encoder | Space | Sentence length | epochs | Training accuracy |
+| --- | --- | --- | --- |
+| HangleCNNEncoder | x | 120 | 500 | 0.7577480591945658 |
+
+
 ## Requires
 
 - bokeh >= 0.12.13
