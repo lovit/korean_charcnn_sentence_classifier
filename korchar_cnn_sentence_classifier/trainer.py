@@ -83,7 +83,7 @@ def predict(model, sents, batch_size=1000, image_size=-1):
 
     hangle_encoder = HangleCNNEncoder()
     n_data = len(sents)
-    n_batch = math.ceil(n_data // batch_size)
+    n_batch = math.ceil(n_data / batch_size)
     pred_labels = []
 
     for i in range(n_batch):
