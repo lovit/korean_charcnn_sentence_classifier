@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import torch
 import time
@@ -77,3 +78,31 @@ def train(model, loss_func, optimizer, texts, label, image_size, epochs, batch_s
         model = model.cpu()
 
     return model
+
+def predict(model, sents, batch_size=1000, image_size=-1):
+
+    hangle_encoder = HangleCNNEncoder()
+    n_data = len(sents)
+    n_batch = math.ceil(n_data // batch_size)
+    pred_labels = []
+
+    for i in range(n_batch):
+
+        # select mini-batch data
+        b = i * batch_size
+        e = min(n_data, (i+1) * batch_size)
+        x_batch = np.stack(
+            [hangle_encoder.encode(text, image_size=image_size)
+             for text in texts[b:e]]
+        )
+
+        # numpy.ndarray -> torch.Tensor
+        x_batch = torch.FloatTensor(x_batch).unsqueeze(1)
+
+        # predict
+        y_pred = model(x_batch)
+        pred_labels += torch.argmax(y_pred, dim=1).numpy().tolist()
+        print('\r%d / %d' % (i, n_batch), end='')
+    print()
+
+    return np.asarray(pred_labels)
