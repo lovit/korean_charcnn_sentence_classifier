@@ -1,6 +1,8 @@
 from bokeh.plotting import figure
-
+import numpy as np
 import re
+import torch
+import torch.nn.functional as F
 from soynlp.hangle import HangleCNNEncoder
 
 hangle_encoder = HangleCNNEncoder()
@@ -15,11 +17,11 @@ def lineup(longer, shorter, scores):
             j += 1
     return scores_
 
-def mark_sentiment_score(sent, model, image_size=-1):
+def sentiment_score(sent, model, image_size=-1):
     x, sent_ = sent_to_image(sent, image_size)
-    scores = sentiment_score(x, model)
+    scores = _sentiment_score(x, model)
     scores = lineup(sent, sent_, scores)
-    return scores
+    return scores, sent_
 
 def sent_to_image(sent, image_size=-1):
     sent_ = normalizer.sub('', sent)
@@ -27,7 +29,7 @@ def sent_to_image(sent, image_size=-1):
     x = x.resize(1, 1, x.size()[0], x.size()[1])
     return x, sent_
 
-def sentiment_score(sentence_image, model):
+def _sentiment_score(sentence_image, model):
     x = sentence_image
     scores = np.zeros(x.shape[2])
 
