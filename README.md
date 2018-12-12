@@ -1,8 +1,8 @@
 ## Performance
 
 | Encoder | Space | Sentence length | epochs | Training accuracy |
-| --- | --- | --- | --- |
-| Cohesion tokenizer + L2 Logistic | x | - | - | 0.8933353044638525 |
+| --- | --- | --- | --- | --- |
+| Cohesion tokenizer + L2 Logistic | x | . | . | 0.8933353044638525 |
 | HangleCNNEncoder | x | 120 | 500 | 0.7577480591945658 |
 
 
