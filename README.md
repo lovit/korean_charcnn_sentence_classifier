@@ -1,10 +1,10 @@
 ## Performance
 
-| Encoder | Space | Sentence length | epochs | Training accuracy |
-| --- | --- | --- | --- | --- |
-| Cohesion tokenizer + L2 Logistic | x | . | . | 0.8933353044638525 |
-| HangleCNNEncoder | x | 120 | 500 | 0.7577480591945658 |
-| HangleCNNEncoder | o | 140 | 1000 | 0.9002077268316351 |
+| Encoder | Space | Sentence length | epochs | Training accuracy | note |
+| --- | --- | --- | --- | --- | --- |
+| Cohesion tokenizer + L2 Logistic | x | . | . | 0.8933353044638525 | . |
+| HangleCNNEncoder | x | 120 | 500 | 0.7577480591945658 | window=\[2, 3, 4, 5\], num filters= 100, max pooling |
+| HangleCNNEncoder | o | 140 | 1000 | 0.9002077268316351 | window=\[2, 3, 4, 5\], num filters= 100, max pooling |
 
 
 ## Requires
