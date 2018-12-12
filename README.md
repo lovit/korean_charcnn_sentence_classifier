@@ -4,6 +4,7 @@
 | --- | --- | --- | --- | --- |
 | Cohesion tokenizer + L2 Logistic | x | . | . | 0.8933353044638525 |
 | HangleCNNEncoder | x | 120 | 500 | 0.7577480591945658 |
+| HangleCNNEncoder | o | 140 | 1000 | 0.9002077268316351 |
 
 
 ## Requires
